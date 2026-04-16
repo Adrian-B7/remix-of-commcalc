@@ -147,7 +147,7 @@ function DebugPage() {
     const results: TableInfo[] = [];
     for (const table of DB_TABLES) {
       try {
-        const { count, error } = await supabase.from(table).select("*", { count: "exact", head: true });
+        const { count, error } = await (supabase.from(table) as any).select("*", { count: "exact", head: true });
         if (error) {
           results.push({ name: table, count: null, error: error.message });
         } else {
