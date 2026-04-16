@@ -162,7 +162,8 @@ function DebugPage() {
 
   const loadTableSample = useCallback(async (table: string) => {
     try {
-      const { data, error } = await (supabase.from(table) as any).select("*").limit(5);
+      const res = await (supabase as any).from(table).select("*").limit(5);
+      const { data, error } = res;
       if (!error && data) {
         setTables((prev) =>
           prev.map((t) => (t.name === table ? { ...t, sample: data as Record<string, unknown>[] } : t))
