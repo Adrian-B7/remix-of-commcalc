@@ -176,7 +176,7 @@ function LandingPage() {
               </Link>
             </Button>
             <Button asChild size="lg" className="border-2 border-white bg-white/15 text-white hover:bg-white/25 backdrop-blur-sm px-6 w-full sm:w-auto min-h-[44px]">
-              <a href="#how-it-works">See how it works</a>
+              <Link to="/demo">Try interactive demo</Link>
             </Button>
           </div>
 
