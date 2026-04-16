@@ -108,6 +108,7 @@ function LandingPage() {
           <nav className="hidden items-center gap-8 md:flex">
             <a href="#features" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Features</a>
             <a href="#how-it-works" className="text-sm text-muted-foreground transition-colors hover:text-foreground">How it works</a>
+            <Link to="/demo" className="text-sm text-muted-foreground transition-colors hover:text-foreground">Demo</Link>
           </nav>
           <div className="hidden sm:flex items-center gap-3">
             <Button asChild variant="ghost" size="sm">
@@ -176,7 +177,7 @@ function LandingPage() {
               </Link>
             </Button>
             <Button asChild size="lg" className="border-2 border-white bg-white/15 text-white hover:bg-white/25 backdrop-blur-sm px-6 w-full sm:w-auto min-h-[44px]">
-              <a href="#how-it-works">See how it works</a>
+              <Link to="/demo">Try interactive demo</Link>
             </Button>
           </div>
 
