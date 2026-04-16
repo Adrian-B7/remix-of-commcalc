@@ -9,7 +9,7 @@ const navItems = [
   { to: "/deals", label: "Deals", icon: FileText },
   { to: "/reps", label: "Reps", icon: Users },
   { to: "/comp-plans", label: "Comp plans", icon: Settings },
-  { to: "/ai-chat", label: "AI chat", icon: MessageSquare },
+  { to: "/ai", label: "AI", icon: MessageSquare },
 ] as const;
 
 export function AppLayout({ children }: { children: React.ReactNode }) {

@@ -18,6 +18,7 @@ import { Route as AuthenticatedDealsRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedCompPlansRouteImport } from './routes/_authenticated/comp-plans'
 import { Route as AuthenticatedAiChatRouteImport } from './routes/_authenticated/ai-chat'
+import { Route as AuthenticatedAiRouteImport } from './routes/_authenticated/ai'
 import { Route as AuthenticatedRepsIndexRouteImport } from './routes/_authenticated/reps.index'
 import { Route as AuthenticatedRepsRepIdRouteImport } from './routes/_authenticated/reps.$repId'
 
@@ -65,6 +66,11 @@ const AuthenticatedAiChatRoute = AuthenticatedAiChatRouteImport.update({
   path: '/ai-chat',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
+const AuthenticatedAiRoute = AuthenticatedAiRouteImport.update({
+  id: '/ai',
+  path: '/ai',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
 const AuthenticatedRepsIndexRoute = AuthenticatedRepsIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/demo': typeof DemoRoute
   '/login': typeof LoginRoute
+  '/ai': typeof AuthenticatedAiRoute
   '/ai-chat': typeof AuthenticatedAiChatRoute
   '/comp-plans': typeof AuthenticatedCompPlansRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/demo': typeof DemoRoute
   '/login': typeof LoginRoute
+  '/ai': typeof AuthenticatedAiRoute
   '/ai-chat': typeof AuthenticatedAiChatRoute
   '/comp-plans': typeof AuthenticatedCompPlansRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/demo': typeof DemoRoute
   '/login': typeof LoginRoute
+  '/_authenticated/ai': typeof AuthenticatedAiRoute
   '/_authenticated/ai-chat': typeof AuthenticatedAiChatRoute
   '/_authenticated/comp-plans': typeof AuthenticatedCompPlansRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
@@ -119,6 +128,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo'
     | '/login'
+    | '/ai'
     | '/ai-chat'
     | '/comp-plans'
     | '/dashboard'
@@ -131,6 +141,7 @@ export interface FileRouteTypes {
     | '/'
     | '/demo'
     | '/login'
+    | '/ai'
     | '/ai-chat'
     | '/comp-plans'
     | '/dashboard'
@@ -143,6 +154,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/demo'
     | '/login'
+    | '/_authenticated/ai'
     | '/_authenticated/ai-chat'
     | '/_authenticated/comp-plans'
     | '/_authenticated/dashboard'
@@ -224,6 +236,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAiChatRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
+    '/_authenticated/ai': {
+      id: '/_authenticated/ai'
+      path: '/ai'
+      fullPath: '/ai'
+      preLoaderRoute: typeof AuthenticatedAiRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
     '/_authenticated/reps/': {
       id: '/_authenticated/reps/'
       path: '/'
@@ -255,6 +274,7 @@ const AuthenticatedRepsRouteWithChildren =
   AuthenticatedRepsRoute._addFileChildren(AuthenticatedRepsRouteChildren)
 
 interface AuthenticatedRouteChildren {
+  AuthenticatedAiRoute: typeof AuthenticatedAiRoute
   AuthenticatedAiChatRoute: typeof AuthenticatedAiChatRoute
   AuthenticatedCompPlansRoute: typeof AuthenticatedCompPlansRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
@@ -263,6 +283,7 @@ interface AuthenticatedRouteChildren {
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedAiRoute: AuthenticatedAiRoute,
   AuthenticatedAiChatRoute: AuthenticatedAiChatRoute,
   AuthenticatedCompPlansRoute: AuthenticatedCompPlansRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
