@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { LayoutDashboard, FileText, Users, Settings, TrendingUp, LogOut, Menu, X, MessageSquare } from "lucide-react";
+import { LayoutDashboard, FileText, Users, Settings, TrendingUp, LogOut, Menu, X, MessageSquare, Bug } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/hooks/use-auth";
 
@@ -10,6 +10,7 @@ const navItems = [
   { to: "/reps", label: "Reps", icon: Users },
   { to: "/comp-plans", label: "Comp plans", icon: Settings },
   { to: "/ai", label: "AI", icon: MessageSquare },
+  { to: "/debug", label: "Debug", icon: Bug },
 ] as const;
 
 export function AppLayout({ children }: { children: React.ReactNode }) {
