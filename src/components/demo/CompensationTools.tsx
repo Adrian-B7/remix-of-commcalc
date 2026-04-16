@@ -3,7 +3,6 @@ import { Slider } from "@/components/ui/slider";
 import {
   DollarSign, Users, Percent, ArrowRight, RotateCcw, Zap,
   UserPlus, Calendar, Shield, AlertTriangle,
-  DndContext, SortableContext,
 } from "lucide-react";
 import {
   DndContext as DndContextCore,
