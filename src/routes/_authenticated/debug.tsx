@@ -162,7 +162,7 @@ function DebugPage() {
 
   const loadTableSample = useCallback(async (table: string) => {
     try {
-      const { data, error } = await supabase.from(table).select("*").limit(5).order("created_at", { ascending: false });
+      const { data, error } = await (supabase.from(table) as any).select("*").limit(5);
       if (!error && data) {
         setTables((prev) =>
           prev.map((t) => (t.name === table ? { ...t, sample: data as Record<string, unknown>[] } : t))
