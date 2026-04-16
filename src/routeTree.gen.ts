@@ -14,6 +14,7 @@ import { Route as DemoRouteImport } from './routes/demo'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRepsRouteImport } from './routes/_authenticated/reps'
+import { Route as AuthenticatedDebugRouteImport } from './routes/_authenticated/debug'
 import { Route as AuthenticatedDealsRouteImport } from './routes/_authenticated/deals'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedCompPlansRouteImport } from './routes/_authenticated/comp-plans'
@@ -44,6 +45,11 @@ const IndexRoute = IndexRouteImport.update({
 const AuthenticatedRepsRoute = AuthenticatedRepsRouteImport.update({
   id: '/reps',
   path: '/reps',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedDebugRoute = AuthenticatedDebugRouteImport.update({
+  id: '/debug',
+  path: '/debug',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
 const AuthenticatedDealsRoute = AuthenticatedDealsRouteImport.update({
@@ -91,6 +97,7 @@ export interface FileRoutesByFullPath {
   '/comp-plans': typeof AuthenticatedCompPlansRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/deals': typeof AuthenticatedDealsRoute
+  '/debug': typeof AuthenticatedDebugRoute
   '/reps': typeof AuthenticatedRepsRouteWithChildren
   '/reps/$repId': typeof AuthenticatedRepsRepIdRoute
   '/reps/': typeof AuthenticatedRepsIndexRoute
@@ -104,6 +111,7 @@ export interface FileRoutesByTo {
   '/comp-plans': typeof AuthenticatedCompPlansRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/deals': typeof AuthenticatedDealsRoute
+  '/debug': typeof AuthenticatedDebugRoute
   '/reps/$repId': typeof AuthenticatedRepsRepIdRoute
   '/reps': typeof AuthenticatedRepsIndexRoute
 }
@@ -118,6 +126,7 @@ export interface FileRoutesById {
   '/_authenticated/comp-plans': typeof AuthenticatedCompPlansRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/deals': typeof AuthenticatedDealsRoute
+  '/_authenticated/debug': typeof AuthenticatedDebugRoute
   '/_authenticated/reps': typeof AuthenticatedRepsRouteWithChildren
   '/_authenticated/reps/$repId': typeof AuthenticatedRepsRepIdRoute
   '/_authenticated/reps/': typeof AuthenticatedRepsIndexRoute
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/comp-plans'
     | '/dashboard'
     | '/deals'
+    | '/debug'
     | '/reps'
     | '/reps/$repId'
     | '/reps/'
@@ -146,6 +156,7 @@ export interface FileRouteTypes {
     | '/comp-plans'
     | '/dashboard'
     | '/deals'
+    | '/debug'
     | '/reps/$repId'
     | '/reps'
   id:
@@ -159,6 +170,7 @@ export interface FileRouteTypes {
     | '/_authenticated/comp-plans'
     | '/_authenticated/dashboard'
     | '/_authenticated/deals'
+    | '/_authenticated/debug'
     | '/_authenticated/reps'
     | '/_authenticated/reps/$repId'
     | '/_authenticated/reps/'
@@ -206,6 +218,13 @@ declare module '@tanstack/react-router' {
       path: '/reps'
       fullPath: '/reps'
       preLoaderRoute: typeof AuthenticatedRepsRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/debug': {
+      id: '/_authenticated/debug'
+      path: '/debug'
+      fullPath: '/debug'
+      preLoaderRoute: typeof AuthenticatedDebugRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
     '/_authenticated/deals': {
@@ -279,6 +298,7 @@ interface AuthenticatedRouteChildren {
   AuthenticatedCompPlansRoute: typeof AuthenticatedCompPlansRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedDealsRoute: typeof AuthenticatedDealsRoute
+  AuthenticatedDebugRoute: typeof AuthenticatedDebugRoute
   AuthenticatedRepsRoute: typeof AuthenticatedRepsRouteWithChildren
 }
 
@@ -288,6 +308,7 @@ const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedCompPlansRoute: AuthenticatedCompPlansRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedDealsRoute: AuthenticatedDealsRoute,
+  AuthenticatedDebugRoute: AuthenticatedDebugRoute,
   AuthenticatedRepsRoute: AuthenticatedRepsRouteWithChildren,
 }
 
